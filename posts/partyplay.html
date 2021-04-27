@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Meta data-->
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- title -->
+    <title>Portfolio</title>
+
+    <!-- Tailwind -->
+    <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body id="swup" class="transition-fade">
+    <div id="container">
+        <div class="absolute top-2 left-1/2">
+            <a href="/" class="text-teal-500 bg-transparent border border-solid border-teal-500 hover:bg-teal-500 hover:text-white active:bg-teal-600 font-bold uppercase px-8 py-3 rounded-full outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150" type="button">
+                <i class="fas fa-back"></i> Volver
+            </a>
+        </div>
+        <!-- Post -->    
+        <div>
+            <div class="grid grid-cols-1 md:grid-cols-2 h-screen">
+                <div class="md:h-screen">
+                    <iframe class="w-full h-full object-cover object-top" src="https://partyplay.ga"></iframe>
+                </div>
+                
+                <div class="flex bg-gray-100 p-10">
+                    <div class="mb-auto mt-auto max-w-lg">
+                        <h1 class="text-3xl uppercase">PartyPlay</h1>
+                        <p class="font-semibold mb-5">Laravel, php, html, javascript, css</p>
+                        <p>Aplicacion web progresiva que permite a los usuarios jugar a juegos casuales / simples (en tiempo real o por turnos) con amigos o desconocidos, todo de manera unifcada en una sola plataforma.</p>
+                        <br>    
+                        <p>La aplicacion incorpora las siguientes caracteristicas:</p>
+                        <ul class="list-disc ml-5">
+                            <li>Chat global</li>
+                            <li>Sistema de skins (visibles y utilizables en los distintos juegos de la plataforma)</li>
+                            <li><a class="underline" href="/assets/img/partyplay_admin.png">panel de administracion de uso interno</a></li>
+                        </ul>
+                        <a href="https://partyplay.ga">
+                            <button class="bg-black rounded-md py-3 px-7 mt-6 text-white">Visitar sitio web</button>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+
+    <!-- scrpts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/swup/2.0.14/swup.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/swup/slide-theme@master/dist/SwupSlideTheme.min.js"></script>
+    <script>
+        const swup = new Swup({
+            animateHistoryBrowsing: true,
+            containers: ["#swup"],
+            debugMode: true,
+            plugins: [new SwupSlideTheme()],
+            containers: ["#container"]
+        });
+    </script>
+    <style>
+        .transition-fade {
+            transition: 0.4s;
+            opacity: 1;
+        }
+
+        html.is-animating .transition-fade {
+            opacity: 0;
+        }
+    </style>
+</body>
+</html>
