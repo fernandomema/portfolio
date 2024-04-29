@@ -1,11 +1,11 @@
 <script lang="ts">
-  import { PortfolioData } from "$lib/PortfolioData";
+    import { PortfolioData } from "$lib/PortfolioData";
     import Slide from "$lib/components/Slide.svelte";
 </script>
 
-<Slide class="bg-blue-400">
-    <div class="w-full h-full flex justify-center items-center">
-        <div class="flex gap-4">
+<Slide class="bg-blue-400 {$$restProps.class || ''}">
+    <div slot="content" class="w-full h-full flex justify-center items-center">
+        <div class="flex gap-4 text-white">
             <img src="/avatar.png" class="rounded-full">
             <div  class="flex flex-col justify-center gap-2">
                 <div class="text-4xl">
@@ -22,4 +22,5 @@
             </div>
         </div>
     </div>
+    <slot slot="floating"></slot>
 </Slide>
