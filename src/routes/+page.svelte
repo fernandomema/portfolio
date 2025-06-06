@@ -7,25 +7,13 @@
     
     import { t } from '$lib/translations';
     import { onMount } from 'svelte';
-
-    onMount(() => {
-        let canScroll = true;
-        document.querySelector('#main-container').addEventListener("scroll", (event) => {
-            if (canScroll) {
-                canScroll = false;
-                setTimeout(() => {
-                    canScroll = true;
-                }, 250);
-            } else {
-                console.log("prevented");
-                event.preventDefault();
-                return false;
-            }
-        });
-    });
+    import { slideScroll } from '$lib/directives/slideScroll';
+    import Skills from '$lib/components/slides/Skills.svelte';
+    import Projects from '$lib/components/slides/Projects.svelte';
+    
 </script>
 
-<div class="snap-y snap-mandatory overflow-auto h-screen" id="main-container">
+<div class="overflow-auto h-screen overflow-hidden" id="main-container">
     <User class="snap-start">
         <div class="absolute left-[60px] bg-white bottom-0 h-[70px] w-[5px] -translate-x-1/2"></div>
         <div class="absolute w-[80px] h-[80px] bg-white bottom-[70px] left-[60px] rounded-full -translate-x-1/2 flex justify-center items-center">
@@ -35,10 +23,7 @@
     
     <Jobs class="snap-start"></Jobs>
 
-    <User class="snap-start">
-        <div class="absolute left-[60px] bg-white bottom-0 h-[70px] w-[5px] -translate-x-1/2"></div>
-        <div class="absolute w-[80px] h-[80px] bg-white bottom-[70px] left-[60px] rounded-full -translate-x-1/2 flex justify-center items-center">
-            <IconBriefcase stroke={2} size={40} class="stroke-red-500" />
-        </div>
-    </User>
+    <Skills></Skills>
+
+    <Projects></Projects>
 </div>

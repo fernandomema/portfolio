@@ -1,8 +1,11 @@
 <script lang="ts">
+    import { slideScroll } from "$lib/directives/slideScroll";
 
+    export let enableScroll = true;
+    const scrollAction = enableScroll ? slideScroll : () => {};
 </script>
 
-<div class="relative w-full h-screen {$$restProps.class || ''}">
+<div class="relative w-full h-screen {$$restProps.class || ''}" use:scrollAction data-container="slider">
     <div class="relative z-10 w-full h-full">
         <slot name="content"></slot>
     </div>
