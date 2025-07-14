@@ -1,5 +1,5 @@
 <script lang="ts">
-    import { page } from '$app/stores';
+	import { page } from '$app/stores';
 	import { PortfolioData } from '$lib/PortfolioData';
 	import { onMount } from 'svelte';
 
@@ -229,7 +229,7 @@
 				<!-- Badge de posición profesional -->
 				<div class="inline-block mb-4">
 					<span class="bg-blue-500 bg-opacity-30 text-white text-sm font-medium px-3 py-1 rounded-full border border-blue-400 border-opacity-30">
-						{PortfolioData.user.application}</span>
+						{PortfolioData.user.application}
 					</span>
 				</div>
 				
