@@ -1,5 +1,7 @@
 import { loadTranslations } from '$lib/translations';
 
+export const prerender = true
+
 export const load = async ({ url }: any) => {
     const { pathname } = url;
 
