@@ -28,12 +28,7 @@
       items: [
         ...PortfolioData.programmingLanguages.filter(lang =>
           ['Services', 'CI/CD', 'Analytics & Monitoring', 'Project Management', 'Design & Prototyping', 'Tech i touched some'].includes(lang.name)
-        ),
-        {
-          name: 'Otras Herramientas',
-          color: 'blue',
-          technologies: PortfolioData.toolsAndSkills.map(tool => ({ name: tool }))
-        }
+        )
       ]
     },
   ];

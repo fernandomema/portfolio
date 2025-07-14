@@ -58,9 +58,9 @@
                     <h1 class="text-3xl sm:text-4xl font-semibold">
                         {PortfolioData.user.name} {PortfolioData.user.firstSurname} {PortfolioData.user.secondSurname}
                     </h1>
-                    {#if PortfolioData.user.slogan}
+                    {#if PortfolioData.user.application}
                         <p class="text-xl sm:text-2xl text-blue-100">
-                            {PortfolioData.user.slogan}
+                            {PortfolioData.user.application}
                         </p>
                     {/if}
                     <button 

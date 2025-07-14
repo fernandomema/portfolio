@@ -6,18 +6,28 @@ export const PortfolioData = {
         email: "fernandomema@gmail.com",
         phone: "+34 644 49 10 07",
         location: "Reus, Tarragona, España",
-        bio: "Desarrollador frontend con enfoque en la experiencia de usuario, interfaces limpias y rendimiento. Apasionado por crear productos que sean útiles, intuitivos y visualmente agradables. Amante de los side-projects, la tecnología y los videojuegos narrativos.",
+        bio: "Desarrollador fullstack con enfoque en la experiencia de usuario, interfaces limpias y rendimiento. Apasionado por crear productos útiles, intuitivos y visualmente agradables. Amante de los side-projects, la tecnología y la mejora continua.",
         github: "https://github.com/fernandomema",
         linkedin: "https://www.linkedin.com/in/fernandomema",
-        website: "https://fernandomema.dev"
+        application: "Fullstack Developer",
     },
     jobs: [{
-        name: "Frontend Developer",
+        name: "Desarrollador Web",
         business: "Viajes Para Ti",
-        technologies: ["Symfony", "PHP", "JavaScript", "Web Components", "Webpack", "Jest", "CSS", "LESS", "SCSS/SASS"],
+        technologies: [
+            { label: "Symfony", icon: "symfony" },
+            { label: "PHP", icon: "php" },
+            { label: "JavaScript", icon: "javascript" },
+            { label: "Web Components", icon: "html5" },
+            { label: "Webpack", icon: "webpack" },
+            { label: "Jest", icon: "jest" },
+            { label: "CSS", icon: "css3" },
+            { label: "LESS", icon: "less" },
+            { label: "SCSS/SASS", icon: "sass" }
+        ],
         dates: {
-            start: new Date(2021, 8, 16),
-            end: undefined,
+            start: new Date(2021, 7, 16),
+            end: new Date(2025, 6, 7),
         },
         description: "Desarrollo y mantenimiento de componentes web personalizados reutilizables. Refactorización de legacy code con buenas prácticas y tests unitarios. Trabajo en un entorno colaborativo con metodología agile y enfoque en producto.",
         longDescription: `<div class="bg-white p-6 rounded-xl shadow-md">
@@ -58,111 +68,193 @@ export const PortfolioData = {
   </div>
 </div>
 `
+    }, {
+        name: "Desarrollador Web",
+        business: "OnWork",
+        technologies: [
+            { label: "Angular", icon: "angular" },
+            { label: "TypeScript", icon: "typescript" },
+            { label: "Node.js", icon: "nodejs" },
+            { label: "Prisma", icon: "prisma" },
+        ],
+        dates: {
+            start: new Date(2021, 1, 20),
+            end: new Date(2021, 6, 30),
+        },
+        description: "Desarrollo de una plataforma backoffice para gestionar los clientes de la empresa. Permitiendo la gestión de usuarios, empresas, estadísticas y representación de gráficos.",
     }],
     studies: [{
         name: "Desarrollo de Aplicaciones Web (DAW)",
         school: "IES Baix Camp (Reus)",
         dates: {
-            start: new Date(2018, 9, 12),
-            end: new Date(2020, 5, 12),
+            start: new Date(2018, 8, 12),
+            end: new Date(2020, 4, 12),
+        }
+    }, {
+        name: "Técnico en Sistemas Microinformáticos y Redes (SMR)",
+        school: "IES Baix Camp (Reus)",
+        dates: {
+            start: new Date(2016, 8, 12),
+            end: new Date(2018, 4, 12),
         }
     }],
+    certifications: [
+        {
+            name: "Curso desarrollo FullStack con PHP y Laravel",
+            hours: 275,
+            year: 2021,
+            institution: "Fundación Esplai",
+            url: null
+        },
+        {
+            name: "Curso de maquetación web con CSS",
+            hours: 2,
+            year: 2019,
+            institution: "OpenWebinars",
+            url: null
+        },
+        {
+            name: "Curso de Fundamentos de progressive web apps",
+            hours: 3,
+            year: 2019,
+            institution: "OpenWebinars",
+            url: "https://openwebinars.net/cert/ZLeR6"
+        },
+        {
+            name: "Curso Cisco cybersecurity essentials",
+            hours: 30,
+            year: 2018,
+            institution: "Cisco networking academy",
+            url: null
+        }
+    ],
     programmingLanguages: [
         {
             name: "JavaScript",
             color: "yellow",
             technologies: [
-                { name: "Svelte" },
-                { name: "SvelteKit" },
-                { name: "Node.js" },
-                { name: "Remotion" },
-                { name: "Jest" },
-                { name: "Playwright" }
+                { label: "Svelte"},
+                { label: "SvelteKit", icon: "svelte" },
+                { label: "Node.js", icon: "nodejs" },
+                { label: "Remotion" },
+                { label: "Jest" },
             ]
         },
         {
             name: "TypeScript",
             color: "blue",
             technologies: [
-                { name: "SvelteKit" },
-                { name: "tRPC" },
-                { name: "Drizzle ORM" },
-                { name: "Zod" }
+                { label: "SvelteKit", icon: "svelte" },
+                { label: "tRPC" },
+                { label: "Drizzle ORM", icon: "azuresqldatabase" },
+                { label: "Prisma", icon: "prisma" },
+                { label: "Zod" }
             ]
         },
         {
             name: "PHP",
             color: "violet",
             technologies: [
-                { name: "Symfony" },
-                { name: "Laravel" },
+                { label: "Symfony", icon: "symfony" },
+                { label: "Laravel", icon: "laravel" }
             ]
         },
         {
             name: "Template Engines",
             color: "green",
             technologies: [
-                { name: "Twig" },
-                { name: "blade" },
-                { name: "ejs" },
+                { label: "Twig", icon: "symfony" },
+                { label: "blade", icon: "laravel" },
+                { label: "ejs" }
             ]
         }, {
             name: "Services",
             color: "green",
             technologies: [
-                { name: "Vercel" },
-                { name: "Netlify" },
-                { name: "Github pages" },
-                { name: "Railway" },
-                { name: "Dockploy" },
-                { name: "Coolify" },
+                { label: "Vercel" },
+                { label: "Netlify" },
+                { label: "Github pages", icon: "github" },
+                { label: "Railway", icon: "heroku" },
+                { label: "Dockploy", icon: "docker" },
+                { label: "Coolify", icon: "docker" }
             ]
         }, {
             name: "Tech i touched some",
             color: "green",
             technologies: [
-                { name: "Unity" },
-                { name: "AWS" },
+                { label: "Unity", icon: "unity" },
+                { label: "AWS", icon: "amazonwebservices" },
+                { label: "Arduino", icon: "arduino" },
+                { label: "React", icon: "react" },
+                { label: "Angular", icon: "angular" },
             ]
         }, {
             name: "CSS",
             color: "blue",
             technologies: [
-                { name: "Tailwind" },
-                { name: "Bootstrap" },
-                { name: "SCSS" },
-                { name: "LESS" },
+                { label: "Tailwind", icon: "tailwindcss" },
+                { label: "Bootstrap", icon: "bootstrap" },
+                { label: "SCSS", icon: "sass" },
+                { label: "LESS", icon: "less" }
             ]
         }, {
             name: "CI/CD",
             color: "blue",
             technologies: [
-                { name: "GitHub Actions" },
-                { name: "GitLab CI" },
+                { label: "GitHub Actions", icon: "github" },
+                { label: "GitLab CI", icon: "gitlab" }
             ]
         },
         {
             name: "Project Management",
             color: "blue",
             technologies: [
-                { name: "Jira" },
-                { name: "GitHub Projects" },
+                { label: "Jira", icon: "jira" },
+                { label: "GitHub Projects", icon: "github" }
             ]
         },
         {
             name: "Design & Prototyping",
             color: "purple",
             technologies: [
-                { name: "Figma Dev Mode" },
+                { label: "Figma Dev Mode", icon: "figma" }
             ]
         },
         {
             name: "Analytics & Monitoring",
             color: "red",
             technologies: [
-                { name: "Google Analytics" },
-                { name: "Sentry" },
-                { name: "Umami.is" },
+                { label: "Google Analytics", icon: "google" },
+                { label: "Sentry" },
+                { label: "Umami.is" },
+            ]
+        }, {
+            name: "Databases",
+            color: "orange",
+            technologies: [
+                { label: "MySQL", icon: "mysql" },
+                { label: "PostgreSQL", icon: "postgresql" },
+                { label: "SQLite", icon: "sqlite" },
+                { label: "MongoDB", icon: "mongodb" },
+                { label: "Redis", icon: "redis" },
+                { label: "TingoDB", icon: "tingodb" },
+                { label: "Payload CMS", icon: "payload" },
+            ]
+        }, {
+            name: "Version Control",
+            color: "blue",
+            technologies: [
+                { label: "Git", icon: "git" },
+                { label: "GitHub", icon: "github" },
+                { label: "GitLab", icon: "gitlab" },
+            ]
+        }, {
+            name: "Devices & Platforms",
+            color: "green",
+            technologies: [
+                { label: "Raspberry Pi", icon: "raspberrypi" },
+                { label: "Arduino", icon: "arduino" },
+                { label: "ESP32", icon: "esp32" },
             ]
         }
     ],
@@ -170,42 +262,68 @@ export const PortfolioData = {
         {
             name: "Tragos Locos",
             description: "App para fiestas y reuniones donde los usuarios reciben retos, preguntas y minijuegos. Disponible en la web y optimizada para móvil.",
-            url: "https://tragoslocos.bytebop.com",
-            technologies: ["SvelteKit", "TypeScript", "Tailwind", "Remotion", "Vercel"]
+            url: "https://tragos-locos.servitimo.net",
+            github: "https://github.com/fernandomema/drinking-game",
+            technologies: [
+                { label: "SvelteKit", icon: "svelte" },
+                { label: "TypeScript", icon: "typescript" },
+                { label: "Tailwind", icon: "tailwindcss" },
+                { label: "Capacitor", icon: "capacitor" },
+                { label: "Github Pages", icon: "github" },
+                { label: "PWA", icon: "pwa" }
+            ]
         },{
             name: "Zumito Framework",
             description: "Framework modular para crear bots de Discord en TypeScript, con arquitectura basada en plugins y sistema de comandos dinámicos.",
             url: "https://framework.zumito.dev",
-            technologies: ["TypeScript", "Discord.js", "Node.js", "Modular Architecture"]
+            github: "https://github.com/zumitoTeam/zumito-framework",
+            technologies: [
+                { label: "TypeScript", icon: "typescript" },
+                { label: "Discord.js", icon: "discordjs" },
+                { label: "Node.js", icon: "nodejs" }
+            ]
         },{
             name: "Game Show Stream Kit",
             description: "Software de escritorio para crear concursos tipo game show en directo integrada con OBS. ",
-            url: "https://github.com/byFercho/game-show-stream-kit",
-            technologies: ["SvelteKit", "WebSocket", "TypeScript", "Tailwind", "OBS Integration"]
+            github: "https://github.com/fernandomema/game-show-stream-kit/tree/V2",
+            technologies: [
+                { label: "Electron", icon: "electron" },
+                { label: "SvelteKit", icon: "svelte" },
+                { label: "WebSocket", icon: "javascript" },
+                { label: "TypeScript", icon: "typescript" },
+                { label: "Tailwind", icon: "tailwindcss" },
+                { label: "OBS Integration", icon: "vscode" }
+            ]
         }, {
             name: "Memeado",
             description: "API para generación de memes usando plantillas predefinidas. Permite pasar texto como parámetros y devuelve imágenes generadas al instante.",
-            url: "https://github.com/fernandomema/memeado",
-            technologies: ["Next.js", "TypeScript", "Sharp", "API REST"]
-        }, {
-            name: "Letter to the World",
-            description: "Plataforma acogedora para enviar cartas anónimas y reconfortantes a desconocidos de todo el mundo.",
-            url: "https://lettertotheworld.bytebop.com",
-            technologies: ["SvelteKit", "TypeScript", "Drizzle ORM", "SQLite"]
-        }, {
-            name: "Split The Price",
-            description: "Marketplace con sorteos cooperativos de tarjetas regalo donde los participantes dividen el precio del premio.",
-            url: "https://split.bytebop.com",
-            technologies: ["SvelteKit", "Stripe", "tRPC", "Planetscale", "Tailwind"]
-        },
-        {
-            name: "Ecos de Medianoche",
-            description: "Aventura cooperativa en pixel art, estilo novela visual, donde los jugadores toman decisiones en grupo.",
-            url: "https://ecos.bytebop.com",
-            technologies: ["SvelteKit", "Canvas API", "Custom Engine", "Pixel Art"]
+            github: "https://github.com/fernandomema/memeado",
+            url: "https://memeado.vercel.app/",
+            technologies: [
+                { label: "Next.js", icon: "nextjs" },
+                { label: "TypeScript", icon: "typescript" },
+                { label: "Sharp", icon: "nodejs" },
+                { label: "canvas", icon: "javascript" },
+                { label: "API REST", icon: "nodejs" }
+            ]
         }
     ],
-    toolsAndSkills: [
-        "Git", "GitHub", "Figma", "Stripe", "Firebase", "PlanetScale", "Vercel", "Vitest", "Docker (nivel básico)"
-    ]
+    softSkills: [
+        { name: "Comunicación efectiva", description: "Expreso ideas de forma clara y escucho activamente." },
+        { name: "Trabajo en equipo", description: "Colaboro y aporto en ambientes multidisciplinares." },
+        { name: "Resolución de problemas", description: "Encuentro soluciones prácticas ante desafíos." },
+        { name: "Pensamiento crítico", description: "Analizo situaciones y tomo decisiones informadas." },
+        { name: "Gestión del tiempo", description: "Organizo tareas y cumplo plazos de entrega." },
+        { name: "Adaptabilidad", description: "Me ajusto rápidamente a cambios y nuevas tecnologías." },
+        { name: "Proactividad", description: "Tomo la iniciativa para mejorar procesos y resultados." },
+        { name: "Aprendizaje continuo", description: "Busco y aplico nuevos conocimientos constantemente." }
+    ],
+    preferredStack: {
+        frontend: "SvelteKit + TypeScript + Tailwind",
+        backend: "SvelteKit + Prisma",
+        infra: "Vercel / Railway / Coolify / Dockploy",
+        ci: "GitHub Actions",
+        analytics: "Umami.is / Sentry",
+        why: "Me permite ir de 0 a producción rápidamente, con buena DX, rendimiento y control total."
+    }
 }
