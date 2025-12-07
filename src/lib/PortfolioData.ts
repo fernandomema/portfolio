@@ -325,5 +325,87 @@ export const PortfolioData = {
         ci: "GitHub Actions",
         analytics: "Umami.is / Sentry",
         why: "Me permite ir de 0 a producción rápidamente, con buena DX, rendimiento y control total."
+    },
+    printing3D: {
+        intro: {
+            title: "Impresión 3D",
+            subtitle: "Portfolio de diseños y proyectos",
+            description: "Desde prototipos funcionales hasta piezas personalizadas, exploro las posibilidades de la impresión 3D para crear soluciones prácticas y creativas."
+        },
+        equipment: [
+            {
+                name: "Creality Ender 3 V3 SE",
+                type: "FDM",
+                specs: {
+                    buildVolume: "220 x 220 x 250 mm",
+                    layerResolution: "0.1 - 0.4 mm",
+                    nozzle: "0.4 mm"
+                }
+            },
+            {
+                name: "Bambu Lab A1",
+                type: "FDM",
+                specs: {
+                    buildVolume: "256 x 256 x 256 mm",
+                    layerResolution: "0.05 - 0.3 mm",
+                    nozzle: "0.4 mm"
+                }
+            }
+        ],
+        materials: [
+            { name: "PLA", color: "#E8F5E9", usage: "Prototipos, figuras decorativas" },
+            { name: "PETG", color: "#E3F2FD", usage: "Piezas funcionales, resistentes" },
+            { name: "TPU", color: "#FCE4EC", usage: "Elementos flexibles" },
+            { name: "ABS", color: "#FFF3E0", usage: "Piezas que requieren resistencia térmica" }
+        ],
+        projects: [
+            {
+                title: "Cartel Victory Royale de Fortnite",
+                description: "Cartel del icónico mensaje Victory Royale de Fortnite. Pieza decorativa perfecta para gamers, con acabado en múltiples colores.",
+                images: ["/images/3d-products/victory-royal-sign/1.png", "/images/3d-products/victory-royal-sign/2.jpeg"],
+                material: "PLA",
+                printTime: "12h 30min",
+                category: "Decorativo",
+                tags: ["fortnite", "gaming", "decoración"],
+                price: 10
+            },
+            {
+                title: "Coronas Clash Royale",
+                description: "Réplica de las icónicas coronas del juego Clash Royale. Perfectas para coleccionistas y fans del juego, disponibles en diferentes colores.",
+                material: "PLA",
+                printTime: "4h",
+                category: "Decorativo",
+                tags: ["clash royale", "gaming", "coleccionable", "supercell"],
+                price: 10,
+                dimensions: "9 x 9 x 6 cm"
+            },
+            {
+                title: "Maqueta Porsche GT3 RS",
+                description: "Maqueta detallada del legendario Porsche 911 GT3 RS. Réplica a escala con detalles precisos, ideal para amantes de los coches deportivos.",
+                images: ["/images/3d-products/maqueta-porsche-gt3-rs/1.png", "/images/3d-products/maqueta-porsche-gt3-rs/2.jpeg"],
+                material: "PLA",
+                printTime: "18h 45min",
+                category: "Decorativo",
+                tags: ["porsche", "coches", "maqueta", "deportivo", "GT3"],
+                price: 25
+            },
+            {
+                title: "Mini P.E.K.K.A",
+                description: "Figura del poderoso Mini P.E.K.K.A de Clash Royale. Personaje icónico con su característico casco y espada, perfecto para coleccionistas del juego.",
+                images: ["/images/3d-products/mini-p-e-k-k-a/1.jpg", "/images/3d-products/mini-p-e-k-k-a/2.jpg", "/images/3d-products/mini-p-e-k-k-a/3.jpg"],
+                material: "PLA",
+                printTime: "10h 20min",
+                category: "Decorativo",
+                tags: ["clash royale", "gaming", "figura", "coleccionable", "supercell"],
+                price: 12
+            },
+            
+        ],
+        categories: ["Todos", "Funcional", "Decorativo", "Tech"],
+        stats: {
+            totalProjects: 9,
+            totalPrintTime: "57h 35min",
+            favoriteMaterial: "PLA"
+        }
     }
 }
