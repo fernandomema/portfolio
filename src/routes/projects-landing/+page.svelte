@@ -1,5 +1,5 @@
 <script lang="ts">
-import { page } from '$app/stores';
+import { browser } from '$app/environment';
 import { PortfolioData } from '../../lib/PortfolioData';
 import IconRocket from '@tabler/icons-svelte/IconRocket.svelte';
 import IconBrandGithub from '@tabler/icons-svelte/IconBrandGithub.svelte';
@@ -9,7 +9,7 @@ import IconX from '@tabler/icons-svelte/IconX.svelte';
 import { onMount } from 'svelte';
 
 // Proyectos filtrados
-let filteredProjects: typeof PortfolioData.personalProjects = [];
+let filteredProjects: typeof PortfolioData.personalProjects = PortfolioData.personalProjects;
 let techParam = '';
 
 // Tecnologías disponibles
@@ -25,11 +25,17 @@ onMount(() => {
     });
   });
   availableTechs = Array.from(techSet).sort();
+  
+  // Obtener parámetro de URL solo en el cliente
+  if (browser) {
+    const params = new URLSearchParams(window.location.search);
+    techParam = params.get('tech') || '';
+    filterProjects();
+  }
 });
 
-// Filtrar proyectos cuando cambia el parámetro tech
-$: {
-  techParam = $page.url.searchParams.get('tech') || '';
+// Filtrar proyectos
+function filterProjects() {
   filteredProjects = PortfolioData.personalProjects.filter((project) => {
     if (!techParam) return true;
     return project.technologies.some(t => t.label.toLowerCase() === techParam.toLowerCase());
@@ -38,16 +44,18 @@ $: {
 
 // Cambiar la URL cuando se selecciona un filtro
 function setTechFilter(tech: string) {
-  const url = new URL(window.location.href);
-  if (tech) {
-    url.searchParams.set('tech', tech);
-  } else {
-    url.searchParams.delete('tech');
-  }
-  window.history.pushState({}, '', url);
+  techParam = tech;
+  filterProjects();
   
-  // Forzar la actualización de la store page
-  window.dispatchEvent(new PopStateEvent('popstate'));
+  if (browser) {
+    const url = new URL(window.location.href);
+    if (tech) {
+      url.searchParams.set('tech', tech);
+    } else {
+      url.searchParams.delete('tech');
+    }
+    window.history.pushState({}, '', url);
+  }
   
   showFilters = false;
 }
