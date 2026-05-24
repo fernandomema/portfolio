@@ -107,6 +107,11 @@
 				print-color-adjust: exact !important;
 				color-adjust: exact !important;
 			}
+			footer {
+				position: static !important;
+				page-break-inside: avoid !important;
+				break-inside: avoid !important;
+			}
 			.shadow-lg, .shadow-md, .shadow-sm, .shadow, .hover\:shadow-md { 
 				box-shadow: none !important; 
 			}
@@ -238,12 +243,19 @@
 					<!-- Columna izquierda: Nombre y bio -->
 					<div class="md:col-span-8">
 						<!-- Nombre con diseño más impactante -->
-						<h1 class="text-4xl font-bold tracking-tight leading-tight">
-							<div class="flex flex-col sm:flex-row sm:items-baseline gap-2 mb-3">
-								<span class="bg-blue-800 bg-opacity-40 px-3 py-1 inline-block transform -skew-x-6 border-l-4 border-blue-400">
-									{PortfolioData.user.name}
-								</span> 
-								<span class="text-blue-50">{PortfolioData.user.firstSurname} {PortfolioData.user.secondSurname}</span>
+						<h1 class="text-3xl font-bold tracking-tight leading-tight">
+							<div class="flex flex-col sm:flex-row sm:items-end gap-4 mb-3">
+								<img
+									src="/images/selfphoto-square.png"
+									alt="Foto de perfil"
+									class="w-24 h-24 rounded-xl object-cover border-2 border-blue-200 border-opacity-70 shadow-md shrink-0"
+								/>
+								<div class="flex flex-col sm:flex-row sm:items-baseline gap-2 min-w-0">
+									<span class="bg-blue-800 bg-opacity-40 px-3 py-1 inline-block transform -skew-x-6 border-l-4 border-blue-400">
+										{PortfolioData.user.name}
+									</span>
+									<span class="text-blue-50">{PortfolioData.user.firstSurname} {PortfolioData.user.secondSurname}</span>
+								</div>
 							</div>
 						</h1>
 						
@@ -259,14 +271,16 @@
 					
 					</div>
 					
-					<!-- Columna derecha: Info de contacto más profesional -->
-					<div class="md:col-span-4 flex flex-col gap-3 bg-gradient-to-br from-blue-800 to-indigo-900 bg-opacity-40 p-5 rounded-lg border border-blue-400 border-opacity-20 shadow-inner">
-						<h3 class="text-blue-200 font-medium text-sm uppercase tracking-widest mb-1 flex items-center">
+					<!-- Columna derecha: Foto y contacto -->
+					<div class="md:col-span-4">
+						<div class="bg-gradient-to-br from-blue-800 to-indigo-900 bg-opacity-40 p-5 rounded-lg border border-blue-400 border-opacity-20 shadow-inner">
+							<div class="flex-1 min-w-0 flex flex-col gap-3">
+								<h3 class="text-blue-200 font-medium text-sm uppercase tracking-widest mb-1 flex items-center">
 							<svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
 								<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
 							</svg>
 							Contacto
-						</h3>
+								</h3>
 						
 						<div class="flex items-center gap-3">
 							<div class="bg-blue-700 bg-opacity-50 p-1.5 rounded">
@@ -332,6 +346,8 @@
 								</a>
 							</div>
 						{/if}
+							</div>
+						</div>
 					</div>
 				</div>
 			</div>
@@ -866,7 +882,7 @@
 		</section>
 
 		<!-- Footer -->
-		<footer class="text-center text-gray-500 text-sm py-6 border-t border-gray-200 print-avoid-break bg-gray-50 mt-[6px] absolute w-full z-10">
+		<footer class="text-center text-gray-500 text-sm py-6 border-t border-gray-200 print-avoid-break bg-gray-50 mt-[6px] print:mt-6">
 			<div class="flex flex-col items-center justify-center">
 				<p class="mb-2">CV actualizado el {new Date().toLocaleDateString('es-ES', { 
 					year: 'numeric', 

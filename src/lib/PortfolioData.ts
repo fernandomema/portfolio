@@ -306,7 +306,16 @@ export const PortfolioData = {
                 { label: "canvas", icon: "javascript" },
                 { label: "API REST", icon: "nodejs" }
             ]
-        }
+        },{
+            name: "Minecraft Server Manager GTK",
+            description: "Aplicación de escritorio para gestionar servidores de Minecraft con interfaz GTK: inicio/parada, monitorización básica y utilidades de administración.",
+            github: "https://github.com/fernandomema/minecraft-server-manager-gtk",
+            technologies: [
+                { label: "Python", icon: "python" },
+                { label: "GTK" },
+                { label: "Linux", icon: "linux" }
+            ]
+        },
     ],
     softSkills: [
         { name: "Comunicación efectiva", description: "Expreso ideas de forma clara y escucho activamente." },
