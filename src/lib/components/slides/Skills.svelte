@@ -1,6 +1,8 @@
 <script lang="ts">
   import Slide from '$lib/components/Slide.svelte';
   import IconCode from '@tabler/icons-svelte/IconCode.svelte';
+  import IconBriefcase from '@tabler/icons-svelte/IconBriefcase.svelte';
+  import IconRocket from '@tabler/icons-svelte/IconRocket.svelte';
   import { slideScroll } from "$lib/directives/slideScroll";
   import { PortfolioData } from "$lib/PortfolioData";
   import { fade, fly } from 'svelte/transition';
@@ -53,10 +55,10 @@
     <div class="absolute left-[60px] top-0 h-[70px] w-[5px] -translate-x-1/2 bg-gradient-to-b from-yellow-500/80 to-red-400/60"></div>
     <div class="absolute left-[60px] bottom-0 h-[70px] w-[5px] -translate-x-1/2 bg-gradient-to-t from-yellow-500/80 to-red-400/60"></div>
     <div class="absolute w-[80px] h-[80px] bg-white top-[70px] left-[60px] rounded-full -translate-x-1/2 flex justify-center items-center">
-        <IconCode stroke={2} size={40} class="stroke-blue-500"></IconCode>
+        <IconBriefcase stroke={2} size={40} class="stroke-red-500"></IconBriefcase>
     </div>
     <div class="absolute w-[80px] h-[80px] bg-white bottom-[70px] left-[60px] rounded-full -translate-x-1/2 flex justify-center items-center">
-        <IconCode stroke={2} size={40} class="stroke-blue-500"></IconCode>
+        <IconRocket stroke={2} size={40} class="stroke-purple-500"></IconRocket>
     </div>
   </slot>
   <div slot="content" class="text-white overflow-x-hidden flex snap-x snap-mandatory h-full" bind:this={slide}>

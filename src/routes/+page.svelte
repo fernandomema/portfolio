@@ -1,6 +1,5 @@
 <script>
     import IconBriefcase from '@tabler/icons-svelte/IconBriefcase.svelte';
-    import IconUser from '@tabler/icons-svelte/IconUser.svelte';
 
     import User from '$lib/components/slides/User.svelte';
     import Jobs from '$lib/components/slides/Jobs.svelte';

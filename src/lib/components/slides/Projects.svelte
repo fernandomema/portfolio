@@ -6,7 +6,7 @@
     import IconBrandGithub from '@tabler/icons-svelte/IconBrandGithub.svelte';
     import IconExternalLink from '@tabler/icons-svelte/IconExternalLink.svelte';
     import IconCode from '@tabler/icons-svelte/IconCode.svelte';
-    import IconUser from '@tabler/icons-svelte/IconUser.svelte';
+    import IconArrowUp from '@tabler/icons-svelte/IconArrowUp.svelte';
 
     let slide: HTMLElement;
     let altElem: HTMLElement | null = null;
@@ -80,11 +80,11 @@
         <!-- Línea de navegación -->
         <div class="absolute left-[60px] bg-white top-0 h-[70px] w-[5px] -translate-x-1/2"></div>
         <div class="absolute w-[80px] h-[80px] bg-white top-[70px] left-[60px] rounded-full -translate-x-1/2 flex justify-center items-center">
-            <IconCode stroke={2} size={40} class="stroke-blue-500"></IconCode>
+            <IconCode stroke={2} size={40} class="stroke-yellow-500"></IconCode>
         </div>
         <div class="absolute left-[60px] bg-white bottom-0 h-[70px] w-[5px] -translate-x-1/2"></div>
         <div class="absolute w-[80px] h-[80px] bg-white bottom-[70px] left-[60px] rounded-full -translate-x-1/2 flex justify-center items-center">
-            <IconUser stroke={2} size={40} class="stroke-blue-500"></IconUser>
+            <IconArrowUp stroke={2} size={40} class="stroke-blue-500"></IconArrowUp>
         </div>
     </div>
 </Slide>

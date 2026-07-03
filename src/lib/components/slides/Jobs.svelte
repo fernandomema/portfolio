@@ -5,6 +5,7 @@
     import { t } from '$lib/translations';
 
     import IconBriefcase from '@tabler/icons-svelte/IconBriefcase.svelte';
+    import IconCode from '@tabler/icons-svelte/IconCode.svelte';
     import IconUser from '@tabler/icons-svelte/IconUser.svelte';
     import { slideScroll } from "$lib/directives/slideScroll";
     import { onMount } from "svelte";
@@ -36,9 +37,9 @@
                     <IconUser stroke={2} size={40} class="stroke-blue-500"></IconUser>
                 </div>
                 <div class="absolute left-[60px] bg-white bottom-0 h-[70px] w-[5px] -translate-x-1/2"></div>
-                <div class="absolute w-[80px] h-[80px] bg-white bottom-[70px] left-[60px] rounded-full -translate-x-1/2 flex justify-center items-center">
-                    <IconBriefcase stroke={2} size={40} class="stroke-yellow-500"></IconBriefcase>
-                </div>
+        <div class="absolute w-[80px] h-[80px] bg-white bottom-[70px] left-[60px] rounded-full -translate-x-1/2 flex justify-center items-center">
+            <IconCode stroke={2} size={40} class="stroke-yellow-500"></IconCode>
+        </div>
             </div>
             {#each PortfolioData.jobs as job}
                 <div class="snap-start min-w-full" use:slideScroll={{altElem}}>
