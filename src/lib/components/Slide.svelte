@@ -17,7 +17,7 @@
     <div class="relative z-10 w-full h-full">
         {@render content?.()}
     </div>
-    <div class="absolute top-0 left-0 bottom-0 right-0 z-0">
+    <div class="absolute top-0 left-0 bottom-0 right-0">
         {@render floating?.()}
     </div>
 </div>

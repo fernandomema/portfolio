@@ -102,7 +102,7 @@
                       </div>
                       <div class="flex flex-wrap gap-2 mt-1 pl-8">
                         {#each skill.technologies as tech, j}
-                          <span class="bg-yellow-100/80 text-yellow-900 px-2 py-1 rounded-full text-xs font-semibold shadow-sm transition-all duration-200 hover:bg-yellow-200 hover:scale-105" style="animation-delay: {j*40}ms">{tech.name}</span>
+                          <span class="bg-yellow-100/80 text-yellow-900 px-2 py-1 rounded-full text-xs font-semibold shadow-sm transition-all duration-200 hover:bg-yellow-200 hover:scale-105" style="animation-delay: {j*40}ms">{tech.label}</span>
                         {/each}
                       </div>
                     </div>

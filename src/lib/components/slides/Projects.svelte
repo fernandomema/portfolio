@@ -59,7 +59,7 @@
                                     <div class="flex flex-wrap justify-center gap-3">
                                         {#each project.technologies as tech}
                                             <span class="backdrop-blur-sm bg-white/5 px-4 py-2 rounded-full text-white/90 text-sm border border-white/10 hover:border-white/30 transition-colors duration-300">
-                                                {tech}
+                                                {tech.label}
                                             </span>
                                         {/each}
                                     </div>

@@ -84,7 +84,7 @@
                                   <div class="flex flex-wrap justify-center gap-3 max-w-2xl">
                                       {#each job.technologies as tech}
                                           <span class="backdrop-blur-sm bg-gradient-to-r from-yellow-500/20 to-red-500/20 px-4 py-2 rounded-full text-yellow-100 text-sm border border-yellow-500/20 hover:border-yellow-400/40 transition-colors duration-300 hover:scale-105 transform cursor-default">
-                                              {tech}
+                                              {tech.label}
                                           </span>
                                       {/each}
                                   </div>
