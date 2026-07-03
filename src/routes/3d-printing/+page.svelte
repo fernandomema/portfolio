@@ -1,20 +1,15 @@
 <script lang="ts">
 import { PortfolioData } from '$lib/PortfolioData';
-import IconPrinter from '@tabler/icons-svelte/IconPrinter.svelte';
-import IconCube from '@tabler/icons-svelte/IconCube.svelte';
-import IconClock from '@tabler/icons-svelte/IconClock.svelte';
-import IconFilter from '@tabler/icons-svelte/IconFilter.svelte';
-import IconX from '@tabler/icons-svelte/IconX.svelte';
 import { fade, fly } from 'svelte/transition';
 
 const { intro, equipment, materials, projects, categories, stats } = PortfolioData.printing3D;
 
-let selectedCategory = 'Todos';
-let showFilters = false;
+let selectedCategory = $state('Todos');
+let showFilters = $state(false);
 
-$: filteredProjects = selectedCategory === 'Todos' 
+let filteredProjects = $derived(selectedCategory === 'Todos' 
   ? projects 
-  : projects.filter(p => p.category === selectedCategory);
+  : projects.filter(p => p.category === selectedCategory));
 
 function setCategory(category: string) {
   selectedCategory = category;
@@ -43,7 +38,7 @@ function slugify(text: string): string {
     <div class="max-w-7xl mx-auto">
       <div class="text-center">
         <div class="inline-flex items-center justify-center p-4 bg-purple-100 rounded-full mb-6">
-          <IconPrinter size={48} class="stroke-purple-600" stroke={2} />
+          <span class="icon-[tabler--printer] size-12 text-purple-600"></span>
         </div>
         <h1 class="text-5xl sm:text-6xl font-bold text-gray-900 mb-4">
           {intro.title}
@@ -84,7 +79,7 @@ function slugify(text: string): string {
         <div class="hidden sm:flex gap-2 flex-wrap">
           {#each categories as category}
             <button
-              on:click={() => setCategory(category)}
+              onclick={() => setCategory(category)}
               class="px-4 py-2 rounded-lg font-medium transition-all {selectedCategory === category ? 'bg-purple-600 text-white shadow-lg' : 'bg-white text-gray-700 hover:bg-gray-100'}"
             >
               {category}
@@ -95,17 +90,17 @@ function slugify(text: string): string {
         <!-- Filters - Mobile -->
         <div class="sm:hidden relative w-full">
           <button
-            on:click={() => showFilters = !showFilters}
+            onclick={() => showFilters = !showFilters}
             class="w-full flex items-center justify-between px-4 py-2 bg-white rounded-lg shadow-md"
           >
             <span class="flex items-center gap-2">
-              <IconFilter size={20} />
+              <span class="icon-[tabler--filter] size-5"></span>
               <span class="font-medium">{selectedCategory}</span>
             </span>
             {#if showFilters}
-              <IconX size={20} />
+              <span class="icon-[tabler--x] size-5"></span>
             {:else}
-              <IconFilter size={20} />
+              <span class="icon-[tabler--filter] size-5"></span>
             {/if}
           </button>
           
@@ -116,7 +111,7 @@ function slugify(text: string): string {
             >
               {#each categories as category}
                 <button
-                  on:click={() => setCategory(category)}
+                  onclick={() => setCategory(category)}
                   class="w-full px-4 py-3 text-left hover:bg-purple-50 transition-colors {selectedCategory === category ? 'bg-purple-100 text-purple-700 font-semibold' : 'text-gray-700'}"
                 >
                   {category}
@@ -142,7 +137,7 @@ function slugify(text: string): string {
               <img src={project.image} alt={project.title} class="h-56 w-full object-cover" />
             {:else}
               <div class="h-56 bg-gradient-to-br from-purple-200 via-blue-200 to-pink-200 flex items-center justify-center">
-                <IconCube size={80} class="stroke-white/50" stroke={1.5} />
+                <span class="icon-[tabler--cube] size-20 text-white/50"></span>
               </div>
             {/if}
             
@@ -166,7 +161,7 @@ function slugify(text: string): string {
               
               <div class="flex items-center gap-4 text-sm text-gray-500 mb-4">
                 <div class="flex items-center gap-1">
-                  <IconClock size={16} />
+                  <span class="icon-[tabler--clock] size-4"></span>
                   <span>{project.printTime}</span>
                 </div>
                 <div class="flex items-center gap-1">
@@ -203,7 +198,7 @@ function slugify(text: string): string {
         {#each equipment as printer}
           <div class="bg-white rounded-xl shadow-md p-6 border border-gray-100 hover:shadow-xl transition-shadow">
             <div class="flex items-center gap-3 mb-4">
-              <IconCube size={32} class="stroke-purple-600" stroke={2} />
+              <span class="icon-[tabler--cube] size-8 text-purple-600"></span>
               <div>
                 <h3 class="text-xl font-bold text-gray-900">{printer.name}</h3>
                 <span class="text-sm text-purple-600 font-medium">{printer.type}</span>

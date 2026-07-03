@@ -1,18 +1,18 @@
 <script lang="ts">
 import { PortfolioData } from '$lib/PortfolioData';
-import IconArrowLeft from '@tabler/icons-svelte/IconArrowLeft.svelte';
-import IconClock from '@tabler/icons-svelte/IconClock.svelte';
-import IconCube from '@tabler/icons-svelte/IconCube.svelte';
-import IconShoppingCart from '@tabler/icons-svelte/IconShoppingCart.svelte';
-import IconMail from '@tabler/icons-svelte/IconMail.svelte';
 import type { PageData } from './$types';
 
-export let data: PageData;
+  interface Props {
+    data: PageData;
+  }
 
-$: project = data.project;
-$: relatedProjects = data.relatedProjects;
-$: currentImageIndex = 0;
-$: images = project.images || (project.image ? [project.image] : []);
+  let { data }: Props = $props();
+
+let project = $derived(data.project);
+let relatedProjects = $derived(data.relatedProjects);
+let currentImageIndex = $state(0);
+  
+let images = $derived(project.images || (project.image ? [project.image] : []));
 
 function nextImage() {
     currentImageIndex = (currentImageIndex + 1) % images.length;
@@ -46,7 +46,7 @@ function slugify(text: string): string {
         href="/3d-printing" 
         class="inline-flex items-center gap-2 text-purple-600 hover:text-purple-700 font-medium transition-colors"
       >
-        <IconArrowLeft size={20} />
+        <span class="icon-[tabler--arrow-left] size-5"></span>
         <span>Volver al portfolio</span>
       </a>
     </div>
@@ -68,34 +68,34 @@ function slugify(text: string): string {
             
             {#if images.length > 1}
               <button
-                on:click={prevImage}
+                onclick={prevImage}
                 class="absolute left-4 top-1/2 -translate-y-1/2 bg-white/90 hover:bg-white p-3 rounded-full shadow-lg transition-all"
                 aria-label="Imagen anterior"
               >
-                <IconArrowLeft size={24} class="stroke-gray-800" />
+                <span class="icon-[tabler--arrow-left] size-6 text-gray-800"></span>
               </button>
-              
+
               <button
-                on:click={nextImage}
+                onclick={nextImage}
                 class="absolute right-4 top-1/2 -translate-y-1/2 bg-white/90 hover:bg-white p-3 rounded-full shadow-lg transition-all"
                 aria-label="Siguiente imagen"
               >
-                <IconArrowLeft size={24} class="stroke-gray-800 rotate-180" />
+                <span class="icon-[tabler--arrow-left] size-6 text-gray-800 rotate-180 inline-block"></span>
               </button>
               
               <div class="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2">
                 {#each images as _, index}
                   <button
-                    on:click={() => currentImageIndex = index}
+                    onclick={() => currentImageIndex = index}
                     class="w-2 h-2 rounded-full transition-all {currentImageIndex === index ? 'bg-white w-8' : 'bg-white/50 hover:bg-white/75'}"
                     aria-label={`Ir a imagen ${index + 1}`}
-                  />
+></button>
                 {/each}
               </div>
             {/if}
           {:else}
             <div class="w-full h-full bg-gradient-to-br from-purple-200 via-blue-200 to-pink-200 flex items-center justify-center">
-              <IconCube size={120} class="stroke-white/50" stroke={1.5} />
+              <span class="icon-[tabler--cube] size-[120px] text-white/50"></span>
             </div>
           {/if}
         </div>
@@ -105,7 +105,7 @@ function slugify(text: string): string {
           <div class="grid grid-cols-4 gap-4">
             {#each images as image, index}
               <button
-                on:click={() => currentImageIndex = index}
+                onclick={() => currentImageIndex = index}
                 class="aspect-square rounded-lg overflow-hidden border-2 transition-all {currentImageIndex === index ? 'border-purple-600 shadow-md' : 'border-transparent hover:border-gray-300'}"
               >
                 <img src={image} alt={`${project.title} - Miniatura ${index + 1}`} class="w-full h-full object-cover" />
@@ -144,24 +144,24 @@ function slugify(text: string): string {
           <div class="grid grid-cols-2 gap-4">
             <div>
               <div class="flex items-center gap-2 text-gray-600 mb-1">
-                <IconCube size={20} />
+                <span class="icon-[tabler--cube] size-5"></span>
                 <span class="font-medium">Material</span>
               </div>
               <p class="text-gray-900 font-semibold">{project.material}</p>
             </div>
-            
+
             <div>
               <div class="flex items-center gap-2 text-gray-600 mb-1">
-                <IconClock size={20} />
+                <span class="icon-[tabler--clock] size-5"></span>
                 <span class="font-medium">Tiempo de impresión</span>
               </div>
               <p class="text-gray-900 font-semibold">{project.printTime}</p>
             </div>
-            
+
             {#if project.dimensions}
               <div class="col-span-2">
                 <div class="flex items-center gap-2 text-gray-600 mb-1">
-                  <IconCube size={20} />
+                  <span class="icon-[tabler--cube] size-5"></span>
                   <span class="font-medium">Dimensiones</span>
                 </div>
                 <p class="text-gray-900 font-semibold">{project.dimensions}</p>
@@ -186,7 +186,7 @@ function slugify(text: string): string {
               href="mailto:{PortfolioData.user.email}?subject=Pedido: {project.title}&body=Hola, estoy interesado en el producto '{project.title}' por {project.price}€."
               class="w-full flex items-center justify-center gap-2 px-6 py-4 bg-purple-600 hover:bg-purple-700 text-white font-bold rounded-xl transition-colors shadow-lg"
             >
-              <IconShoppingCart size={24} />
+              <span class="icon-[tabler--shopping-cart] size-6"></span>
               <span>Realizar pedido</span>
             </a>
           {:else}
@@ -194,16 +194,16 @@ function slugify(text: string): string {
               href="mailto:{PortfolioData.user.email}?subject=Consulta: {project.title}&body=Hola, me gustaría consultar sobre el producto '{project.title}'."
               class="w-full flex items-center justify-center gap-2 px-6 py-4 bg-purple-600 hover:bg-purple-700 text-white font-bold rounded-xl transition-colors shadow-lg"
             >
-              <IconMail size={24} />
+              <span class="icon-[tabler--mail] size-6"></span>
               <span>Consultar disponibilidad</span>
             </a>
           {/if}
-          
+
           <a
             href="mailto:{PortfolioData.user.email}?subject=Consulta: {project.title}"
             class="w-full flex items-center justify-center gap-2 px-6 py-4 bg-white hover:bg-gray-50 text-gray-700 font-semibold rounded-xl transition-colors border-2 border-gray-200"
           >
-            <IconMail size={24} />
+            <span class="icon-[tabler--mail] size-6"></span>
             <span>Hacer una pregunta</span>
           </a>
         </div>
@@ -238,7 +238,7 @@ function slugify(text: string): string {
                 <img src={related.image} alt={related.title} class="h-56 w-full object-cover" />
               {:else}
                 <div class="h-56 bg-gradient-to-br from-purple-200 via-blue-200 to-pink-200 flex items-center justify-center">
-                  <IconCube size={80} class="stroke-white/50" stroke={1.5} />
+                  <span class="icon-[tabler--cube] size-20 text-white/50"></span>
                 </div>
               {/if}
               

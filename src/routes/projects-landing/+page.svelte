@@ -1,20 +1,15 @@
 <script lang="ts">
 import { browser } from '$app/environment';
 import { PortfolioData } from '../../lib/PortfolioData';
-import IconRocket from '@tabler/icons-svelte/IconRocket.svelte';
-import IconBrandGithub from '@tabler/icons-svelte/IconBrandGithub.svelte';
-import IconExternalLink from '@tabler/icons-svelte/IconExternalLink.svelte';
-import IconFilter from '@tabler/icons-svelte/IconFilter.svelte';
-import IconX from '@tabler/icons-svelte/IconX.svelte';
 import { onMount } from 'svelte';
 
 // Proyectos filtrados
-let filteredProjects: typeof PortfolioData.personalProjects = PortfolioData.personalProjects;
-let techParam = '';
+let filteredProjects: typeof PortfolioData.personalProjects = $state(PortfolioData.personalProjects);
+let techParam = $state('');
 
 // Tecnologías disponibles
-let availableTechs: string[] = [];
-let showFilters = false;
+let availableTechs: string[] = $state([]);
+let showFilters = $state(false);
 
 // Generar la lista de todas las tecnologías disponibles en los proyectos
 onMount(() => {
@@ -68,7 +63,7 @@ function setTechFilter(tech: string) {
     
     <div class="relative z-10 flex flex-col items-center max-w-4xl mx-auto text-center">
       <div class="bg-white/80 rounded-full p-5 shadow-xl mb-6 animate-float">
-        <IconRocket stroke={2} size={48} class="stroke-purple-500" />
+        <span class="icon-[tabler--rocket] size-12 text-purple-500"></span>
       </div>
       
       <h1 class="text-4xl sm:text-5xl md:text-6xl font-extrabold tracking-tight mb-4 text-transparent bg-clip-text bg-gradient-to-r from-white to-blue-200">
@@ -80,8 +75,8 @@ function setTechFilter(tech: string) {
         {#if techParam}
           <span class="block mt-2">
             Mostrando proyectos con tecnología: <span class="font-semibold bg-white/20 px-2 py-1 rounded">{techParam}</span>
-            <button on:click={() => setTechFilter('')} class="ml-2 text-white/80 hover:text-white" aria-label="Quitar filtro">
-              <IconX size={18} />
+            <button onclick={() => setTechFilter('')} class="ml-2 text-white/80 hover:text-white" aria-label="Quitar filtro">
+              <span class="icon-[tabler--x] size-[18px]"></span>
             </button>
           </span>
         {/if}
@@ -90,9 +85,9 @@ function setTechFilter(tech: string) {
       <!-- Botón para mostrar/ocultar filtros -->
       <button 
         class="mt-6 px-6 py-3 bg-white/10 hover:bg-white/20 border border-white/20 rounded-full text-white flex items-center gap-2 transition-all transform hover:scale-105" 
-        on:click={() => showFilters = !showFilters}
+        onclick={() => showFilters = !showFilters}
       >
-        <IconFilter size={18} />
+        <span class="icon-[tabler--filter] size-[18px]"></span>
         {showFilters ? 'Ocultar filtros' : 'Filtrar por tecnología'}
       </button>
       
@@ -103,7 +98,7 @@ function setTechFilter(tech: string) {
             {#each availableTechs as tech}
               <button 
                 class="px-3 py-1.5 rounded-full text-sm font-medium transition-all {tech.toLowerCase() === techParam.toLowerCase() ? 'bg-white/30 text-white' : 'bg-white/10 text-white/80 hover:bg-white/20 hover:text-white'}"
-                on:click={() => setTechFilter(tech)}
+                onclick={() => setTechFilter(tech)}
               >
                 {tech}
               </button>
@@ -121,7 +116,7 @@ function setTechFilter(tech: string) {
         <p class="text-white text-xl">No se encontraron proyectos con la tecnología seleccionada.</p>
         <button 
           class="mt-4 px-4 py-2 bg-white/20 hover:bg-white/30 rounded-lg text-white transition-colors" 
-          on:click={() => setTechFilter('')}
+          onclick={() => setTechFilter('')}
         >
           Ver todos los proyectos
         </button>
@@ -154,7 +149,7 @@ function setTechFilter(tech: string) {
                     rel="noopener noreferrer"
                     class="inline-flex items-center gap-1.5 text-white hover:text-blue-200 transition-colors text-sm font-medium"
                   >
-                    <IconExternalLink size={16} />
+                    <span class="icon-[tabler--external-link] size-4"></span>
                     <span>Ver proyecto</span>
                   </a>
                 {/if}
@@ -166,7 +161,7 @@ function setTechFilter(tech: string) {
                     rel="noopener noreferrer"
                     class="inline-flex items-center gap-1.5 text-white hover:text-blue-200 transition-colors text-sm font-medium"
                   >
-                    <IconBrandGithub size={16} />
+                    <span class="icon-[tabler--brand-github] size-4"></span>
                     <span>Ver código</span>
                   </a>
                 {/if}

@@ -1,15 +1,23 @@
 <script lang="ts">
     import { slideScroll } from "$lib/directives/slideScroll";
+    import type { Snippet } from 'svelte';
 
-    export let enableScroll = true;
-    const scrollAction = enableScroll ? slideScroll : () => {};
+    interface Props {
+        enableScroll?: boolean;
+        class?: string;
+        content?: Snippet;
+        floating?: Snippet;
+    }
+
+    let { enableScroll = true, class: className, content, floating }: Props = $props();
+    const scrollAction = $derived(enableScroll ? slideScroll : () => {});
 </script>
 
-<div class="relative w-full h-screen {$$restProps.class || ''}" use:scrollAction data-container="slider">
+<div class={`relative w-full h-screen ${className ?? ''}`} use:scrollAction data-container="slider">
     <div class="relative z-10 w-full h-full">
-        <slot name="content"></slot>
+        {@render content?.()}
     </div>
     <div class="absolute top-0 left-0 bottom-0 right-0 z-0">
-        <slot name="floating"></slot>
+        {@render floating?.()}
     </div>
 </div>
