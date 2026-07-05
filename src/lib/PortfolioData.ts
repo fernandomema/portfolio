@@ -260,16 +260,54 @@ export const PortfolioData = {
     ],
     personalProjects: [
         {
+            name: "Flow Cursor",
+            description: "Librería para Svelte 5 que porta el efecto de cursor magnético estilo iPad. Expone una action idiomática (use:flowCursor) con inicialización perezosa y limpieza automática al desmontar.",
+            url: "https://fernandomema.github.io/flow-cursor/",
+            github: "https://github.com/fernandomema/flow-cursor",
+            year: 2026,
+            status: "Active",
+            tablerIcon: "tabler--pointer",
+            gradient: "from-violet-400 via-violet-500 to-purple-600",
+            accent: "violet",
+            media: {
+                type: "video",
+                src: "/videos/projects/flow-cursor.webm",
+            },
+            highlights: [
+                "Action API idiomática para Svelte 5 (use:flowCursor)",
+                "Controlador perezoso con auto-limpieza",
+                "Escape hatch imperativo re-exportado del original"
+            ],
+            technologies: [
+                { label: "Svelte 5", icon: "svelte" },
+                { label: "TypeScript", icon: "typescript" },
+                { label: "Vite" }
+            ]
+        },
+        {
             name: "Tragos Locos",
             description: "App para fiestas y reuniones donde los usuarios reciben retos, preguntas y minijuegos. Disponible en la web y optimizada para móvil.",
             url: "https://tragos-locos.servitimo.net",
             github: "https://github.com/fernandomema/drinking-game",
+            year: 2024,
+            status: "Active",
+            tablerIcon: "tabler--beer",
+            gradient: "from-amber-400 via-amber-500 to-orange-600",
+            accent: "amber",
+            media: {
+                type: "image",
+                src: "/images/projects/tragos-locos/square.svg",
+            },
+            highlights: [
+                "PWA instalable en iOS y Android",
+                "Multijugador con retos en tiempo real",
+                "Funciona offline con Service Workers"
+            ],
             technologies: [
                 { label: "SvelteKit", icon: "svelte" },
                 { label: "TypeScript", icon: "typescript" },
                 { label: "Tailwind", icon: "tailwindcss" },
                 { label: "Capacitor", icon: "capacitor" },
-                { label: "Github Pages", icon: "github" },
                 { label: "PWA", icon: "pwa" }
             ]
         },{
@@ -277,6 +315,16 @@ export const PortfolioData = {
             description: "Framework modular para crear bots de Discord en TypeScript, con arquitectura basada en plugins y sistema de comandos dinámicos.",
             url: "https://framework.zumito.dev",
             github: "https://github.com/zumitoTeam/zumito-framework",
+            year: 2023,
+            status: "Active",
+            tablerIcon: "tabler--brand-discord-filled",
+            gradient: "from-indigo-500 via-indigo-600 to-purple-700",
+            accent: "indigo",
+            highlights: [
+                "Arquitectura 100% basada en plugins",
+                "Sistema de comandos slash dinámicos",
+                "Hot-reload de módulos en producción"
+            ],
             technologies: [
                 { label: "TypeScript", icon: "typescript" },
                 { label: "Discord.js", icon: "discordjs" },
@@ -284,32 +332,82 @@ export const PortfolioData = {
             ]
         },{
             name: "Game Show Stream Kit",
-            description: "Software de escritorio para crear concursos tipo game show en directo integrada con OBS. ",
+            description: "Software de escritorio para crear concursos tipo game show en directo integrada con OBS.",
             github: "https://github.com/fernandomema/game-show-stream-kit/tree/V2",
+            year: 2023,
+            status: "Active",
+            tablerIcon: "tabler--device-tv",
+            gradient: "from-rose-500 via-pink-500 to-fuchsia-600",
+            accent: "rose",
+            highlights: [
+                "Overlays interactivos en tiempo real",
+                "Integración nativa con OBS Studio",
+                "WebSockets para sincronizar audiencia"
+            ],
             technologies: [
                 { label: "Electron", icon: "electron" },
                 { label: "SvelteKit", icon: "svelte" },
                 { label: "WebSocket", icon: "javascript" },
                 { label: "TypeScript", icon: "typescript" },
                 { label: "Tailwind", icon: "tailwindcss" },
-                { label: "OBS Integration", icon: "vscode" }
+                { label: "OBS", icon: "vscode" }
             ]
         }, {
             name: "Memeado",
             description: "API para generación de memes usando plantillas predefinidas. Permite pasar texto como parámetros y devuelve imágenes generadas al instante.",
             github: "https://github.com/fernandomema/memeado",
             url: "https://memeado.vercel.app/",
+            year: 2024,
+            status: "Active",
+            tablerIcon: "tabler--mood-smile-beam",
+            gradient: "from-yellow-400 via-amber-400 to-orange-500",
+            accent: "yellow",
+            highlights: [
+                "Renderizado server-side con Sharp",
+                "API REST stateless",
+                "Soporta +50 plantillas personalizables"
+            ],
             technologies: [
                 { label: "Next.js", icon: "nextjs" },
                 { label: "TypeScript", icon: "typescript" },
                 { label: "Sharp", icon: "nodejs" },
-                { label: "canvas", icon: "javascript" },
+                { label: "Canvas", icon: "javascript" },
                 { label: "API REST", icon: "nodejs" }
+            ]
+        },{
+            name: "Yadm Studio",
+            description: "Interfaz web para gestionar y versionar dotfiles con yadm. Visualiza diffs, sincroniza entre máquinas y gestiona perfiles desde el navegador.",
+            github: "https://github.com/fernandomema/yadm-studio",
+            year: 2024,
+            status: "Active",
+            tablerIcon: "tabler--settings-automation",
+            gradient: "from-cyan-400 via-sky-500 to-indigo-600",
+            accent: "cyan",
+            highlights: [
+                "Visualización de diffs entre máquinas",
+                "Sincronización bidireccional con yadm",
+                "Gestión de perfiles por contexto"
+            ],
+            technologies: [
+                { label: "SvelteKit", icon: "svelte" },
+                { label: "TypeScript", icon: "typescript" },
+                { label: "Tailwind", icon: "tailwindcss" },
+                { label: "yadm", icon: "linux" }
             ]
         },{
             name: "Minecraft Server Manager GTK",
             description: "Aplicación de escritorio para gestionar servidores de Minecraft con interfaz GTK: inicio/parada, monitorización básica y utilidades de administración.",
             github: "https://github.com/fernandomema/minecraft-server-manager-gtk",
+            year: 2022,
+            status: "Active",
+            tablerIcon: "tabler--device-gamepad-2",
+            gradient: "from-emerald-400 via-emerald-500 to-teal-600",
+            accent: "emerald",
+            highlights: [
+                "Interfaz nativa GTK en Linux",
+                "Monitor de CPU/RAM en tiempo real",
+                "Backups automáticos programables"
+            ],
             technologies: [
                 { label: "Python", icon: "python" },
                 { label: "GTK" },

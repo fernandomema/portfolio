@@ -2,66 +2,57 @@ import type { Action } from 'svelte/action';
 
 type Params = { altElem?: HTMLElement | null };
 
-export const slideScroll: Action<HTMLElement, Params | undefined> = (node, params) => {
-  let altElem: HTMLElement | null = params?.altElem ?? null;
-  let startY = 0;
-  let endY = 0;
+function isVisible(el: Element | null | undefined): el is HTMLElement {
+    if (!(el instanceof HTMLElement)) return false;
+    const style = getComputedStyle(el);
+    return style.display !== 'none' && style.visibility !== 'hidden';
+}
 
-  function handleScroll(direction: 'up' | 'down') {
-    if (direction === 'down') {
-      const nextSibling = node.nextElementSibling || altElem?.nextElementSibling;
-      if (nextSibling) {
-        nextSibling.scrollIntoView({
-          behavior: 'smooth',
-          block: 'start',
-          inline: 'nearest',
-        });
-      }
-    } else {
-      const previousSibling = node.previousElementSibling || altElem?.previousElementSibling;
-      if (previousSibling) {
-        previousSibling.scrollIntoView({
-          behavior: 'smooth',
-          block: 'end',
-          inline: 'nearest',
-        });
-      }
+function findVisibleSibling(
+    start: Element | null | undefined,
+    direction: 'next' | 'prev',
+    fallback: HTMLElement | null
+): HTMLElement | null {
+    let el: Element | null = start ?? (direction === 'next' ? fallback?.nextElementSibling ?? null : fallback?.previousElementSibling ?? null);
+    while (el) {
+        if (isVisible(el)) return el;
+        el = direction === 'next' ? el.nextElementSibling : el.previousElementSibling;
     }
-  }
+    return null;
+}
 
-  const onWheel = (e: WheelEvent) => {
-    e.preventDefault();
-    e.stopPropagation();
-    const direction = e.deltaY > 0 ? 'down' : 'up';
-    handleScroll(direction);
-  };
+export const slideScroll: Action<HTMLElement, Params | undefined> = (node, params) => {
+    let altElem: HTMLElement | null = params?.altElem ?? null;
 
-  const onTouchStart = (e: TouchEvent) => {
-    startY = e.touches[0].clientY;
-  };
+    function handleScroll(direction: 'up' | 'down') {
+        const start = direction === 'down'
+            ? (node.nextElementSibling ?? null)
+            : (node.previousElementSibling ?? null);
+        const sibling = findVisibleSibling(start, direction === 'down' ? 'next' : 'prev', altElem);
+        if (sibling) {
+            sibling.scrollIntoView({
+                behavior: 'smooth',
+                block: 'start',
+                inline: 'nearest',
+            });
+        }
+    }
 
-  const onTouchEnd = (e: TouchEvent) => {
-    endY = e.changedTouches[0].clientY;
-    const diffY = startY - endY;
+    const onWheel = (e: WheelEvent) => {
+        e.preventDefault();
+        e.stopPropagation();
+        const direction = e.deltaY > 0 ? 'down' : 'up';
+        handleScroll(direction);
+    };
 
-    if (Math.abs(diffY) < 30) return; // Ignorar toques pequeños
+    node.addEventListener('wheel', onWheel, { passive: false });
 
-    const direction = diffY > 0 ? 'down' : 'up';
-    handleScroll(direction);
-  };
-
-  node.addEventListener('wheel', onWheel, { passive: false });
-  node.addEventListener('touchstart', onTouchStart, { passive: true });
-  node.addEventListener('touchend', onTouchEnd, { passive: true });
-
-  return {
-    update(newParams) {
-      altElem = newParams?.altElem ?? null;
-    },
-    destroy() {
-      node.removeEventListener('wheel', onWheel);
-      node.removeEventListener('touchstart', onTouchStart);
-      node.removeEventListener('touchend', onTouchEnd);
-    },
-  };
+    return {
+        update(newParams) {
+            altElem = newParams?.altElem ?? null;
+        },
+        destroy() {
+            node.removeEventListener('wheel', onWheel);
+        },
+    };
 };

@@ -1,0 +1,1 @@
+- Puedes agregar un patron o effecto svg path o algo para el fondo de la seccion de proyectos en la home para que no se vea tan liso el blur de las cards. algo que vaya pasando seamless de slide a slide.
