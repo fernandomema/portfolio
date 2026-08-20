@@ -22,6 +22,8 @@ jobs:
 
       - name: Build project
         run: npm run build
+        env:
+          BASE_PATH: /portfolio
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v4

@@ -1,6 +1,7 @@
 <script lang="ts">
 import { PortfolioData } from '$lib/PortfolioData';
 import { fade, fly } from 'svelte/transition';
+import { base } from '$app/paths';
 
 const { intro, equipment, materials, projects, categories, stats } = PortfolioData.printing3D;
 
@@ -126,15 +127,15 @@ function slugify(text: string): string {
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
         {#each filteredProjects as project (project.title)}
           <a 
-            href="/3d-printing/{slugify(project.title)}"
+            href="{base}/3d-printing/{slugify(project.title)}"
             class="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-2xl transition-all transform hover:-translate-y-1 block"
             transition:fade={{ duration: 200 }}
           >
             <!-- Image or Placeholder -->
             {#if project.images && project.images.length > 0}
-              <img src={project.images[0]} alt={project.title} class="h-56 w-full object-cover" />
+              <img src="{base}/{project.images[0]}" alt={project.title} class="h-56 w-full object-cover" />
             {:else if project.image}
-              <img src={project.image} alt={project.title} class="h-56 w-full object-cover" />
+              <img src="{base}/{project.image}" alt={project.title} class="h-56 w-full object-cover" />
             {:else}
               <div class="h-56 bg-gradient-to-br from-purple-200 via-blue-200 to-pink-200 flex items-center justify-center">
                 <span class="icon-[tabler--cube] size-20 text-white/50"></span>

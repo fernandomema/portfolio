@@ -2,6 +2,7 @@
 	import { page } from '$app/state';
 	import { PortfolioData } from '$lib/PortfolioData';
 	import { onMount } from 'svelte';
+	import { base } from '$app/paths';
 
 	let printMode = $state(false);
 
@@ -267,7 +268,7 @@
 						<h1 class="text-3xl font-bold tracking-tight leading-tight">
 							<div class="flex flex-col sm:flex-row sm:items-end gap-4 mb-3">
 								<img
-									src="/images/selfphoto-square.png"
+									src="{base}/images/selfphoto-square.png"
 									alt="Foto de perfil"
 									class="w-24 h-24 rounded-xl object-cover border-2 border-blue-200/70 shadow-md shrink-0"
 								/>
@@ -926,7 +927,7 @@
 					</div>
 				</div>
 				
-				<p class="text-xs text-gray-400">© {new Date().getFullYear()} {PortfolioData.user.name} {PortfolioData.user.firstSurname} • CV interactivo disponible en <a href="/" class="text-blue-500 hover:underline">{page.url.toString().replace('/print', '')}</a></p>
+				<p class="text-xs text-gray-400">© {new Date().getFullYear()} {PortfolioData.user.name} {PortfolioData.user.firstSurname} • CV interactivo disponible en <a href="{base}/" class="text-blue-500 hover:underline">{page.url.toString().replace('/print', '')}</a></p>
 			</div>
 		</footer>
 	</div>

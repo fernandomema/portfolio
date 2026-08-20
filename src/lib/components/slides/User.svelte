@@ -5,6 +5,7 @@
     import { cubicOut, backOut } from 'svelte/easing';
     import { onMount, tick } from 'svelte';
     import { userModalOpen } from '$lib/stores/userModal.svelte';
+    import { base } from '$app/paths';
 
     interface Props {
         children?: import('svelte').Snippet;
@@ -100,7 +101,7 @@
                     <div class="flex flex-col items-center sm:items-start gap-4">
                         <div class="relative">
                             <img
-                                src="/avatar.png"
+                                src="{base}/avatar.png"
                                 alt="Profile"
                                 class="relative rounded-full w-32 h-32 sm:w-40 sm:h-40 object-cover shadow-lg transition-all duration-700"
                             >

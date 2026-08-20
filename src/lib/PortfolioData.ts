@@ -271,7 +271,7 @@ export const PortfolioData = {
             accent: "violet",
             media: {
                 type: "video",
-                src: "/videos/projects/flow-cursor.webm",
+                src: "videos/projects/flow-cursor.webm",
             },
             highlights: [
                 "Action API idiomática para Svelte 5 (use:flowCursor)",
@@ -296,7 +296,7 @@ export const PortfolioData = {
             accent: "amber",
             media: {
                 type: "image",
-                src: "/images/projects/tragos-locos/square.svg",
+                src: "images/projects/tragos-locos/square.svg",
             },
             highlights: [
                 "PWA instalable en iOS y Android",
@@ -469,7 +469,7 @@ export const PortfolioData = {
             {
                 title: "Cartel Victory Royale de Fortnite",
                 description: "Cartel del icónico mensaje Victory Royale de Fortnite. Pieza decorativa perfecta para gamers, con acabado en múltiples colores.",
-                images: ["/images/3d-products/victory-royal-sign/1.png", "/images/3d-products/victory-royal-sign/2.jpeg"],
+                images: ["images/3d-products/victory-royal-sign/1.png", "images/3d-products/victory-royal-sign/2.jpeg"],
                 material: "PLA",
                 printTime: "12h 30min",
                 category: "Decorativo",
@@ -489,7 +489,7 @@ export const PortfolioData = {
             {
                 title: "Maqueta Porsche GT3 RS",
                 description: "Maqueta detallada del legendario Porsche 911 GT3 RS. Réplica a escala con detalles precisos, ideal para amantes de los coches deportivos.",
-                images: ["/images/3d-products/maqueta-porsche-gt3-rs/1.png", "/images/3d-products/maqueta-porsche-gt3-rs/2.jpeg"],
+                images: ["images/3d-products/maqueta-porsche-gt3-rs/1.png", "images/3d-products/maqueta-porsche-gt3-rs/2.jpeg"],
                 material: "PLA",
                 printTime: "18h 45min",
                 category: "Decorativo",
@@ -499,7 +499,7 @@ export const PortfolioData = {
             {
                 title: "Mini P.E.K.K.A",
                 description: "Figura del poderoso Mini P.E.K.K.A de Clash Royale. Personaje icónico con su característico casco y espada, perfecto para coleccionistas del juego.",
-                images: ["/images/3d-products/mini-p-e-k-k-a/1.jpg", "/images/3d-products/mini-p-e-k-k-a/2.jpg", "/images/3d-products/mini-p-e-k-k-a/3.jpg"],
+                images: ["images/3d-products/mini-p-e-k-k-a/1.jpg", "images/3d-products/mini-p-e-k-k-a/2.jpg", "images/3d-products/mini-p-e-k-k-a/3.jpg"],
                 material: "PLA",
                 printTime: "10h 20min",
                 category: "Decorativo",

@@ -1,6 +1,7 @@
 <script lang="ts">
 import { PortfolioData } from '$lib/PortfolioData';
 import type { PageData } from './$types';
+import { base } from '$app/paths';
 
   interface Props {
     data: PageData;
@@ -43,7 +44,7 @@ function slugify(text: string): string {
   <div class="bg-white border-b border-gray-200">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
       <a 
-        href="/3d-printing" 
+        href="{base}/3d-printing" 
         class="inline-flex items-center gap-2 text-purple-600 hover:text-purple-700 font-medium transition-colors"
       >
         <span class="icon-[tabler--arrow-left] size-5"></span>
@@ -61,7 +62,7 @@ function slugify(text: string): string {
         <div class="relative aspect-square bg-white rounded-2xl shadow-xl overflow-hidden">
           {#if images.length > 0}
             <img 
-              src={images[currentImageIndex]} 
+              src="{base}/{images[currentImageIndex]}" 
               alt={`${project.title} - Imagen ${currentImageIndex + 1}`}
               class="w-full h-full object-cover"
             />
@@ -108,7 +109,7 @@ function slugify(text: string): string {
                 onclick={() => currentImageIndex = index}
                 class="aspect-square rounded-lg overflow-hidden border-2 transition-all {currentImageIndex === index ? 'border-purple-600 shadow-md' : 'border-transparent hover:border-gray-300'}"
               >
-                <img src={image} alt={`${project.title} - Miniatura ${index + 1}`} class="w-full h-full object-cover" />
+                <img src="{base}/{image}" alt={`${project.title} - Miniatura ${index + 1}`} class="w-full h-full object-cover" />
               </button>
             {/each}
           </div>
@@ -229,13 +230,13 @@ function slugify(text: string): string {
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {#each relatedProjects as related}
             <a 
-              href="/3d-printing/{slugify(related.title)}"
+              href="{base}/3d-printing/{slugify(related.title)}"
               class="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-2xl transition-all transform hover:-translate-y-1"
             >
               {#if related.images && related.images.length > 0}
-                <img src={related.images[0]} alt={related.title} class="h-56 w-full object-cover" />
+                <img src="{base}/{related.images[0]}" alt={related.title} class="h-56 w-full object-cover" />
               {:else if related.image}
-                <img src={related.image} alt={related.title} class="h-56 w-full object-cover" />
+                <img src="{base}/{related.image}" alt={related.title} class="h-56 w-full object-cover" />
               {:else}
                 <div class="h-56 bg-gradient-to-br from-purple-200 via-blue-200 to-pink-200 flex items-center justify-center">
                   <span class="icon-[tabler--cube] size-20 text-white/50"></span>

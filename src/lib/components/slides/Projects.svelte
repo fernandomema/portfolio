@@ -2,6 +2,7 @@
     import { PortfolioData } from "$lib/PortfolioData";
     import Slide from "$lib/components/Slide.svelte";
     import { slideScroll } from "$lib/directives/slideScroll";
+    import { base } from '$app/paths';
 
     let slide: HTMLElement | undefined = $state();
     let altElem: HTMLElement | null = $derived(slide?.closest('[data-container="slider"]') as HTMLElement | null);
@@ -117,7 +118,7 @@
                             <video
                                 class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                                 style="transition-timing-function: cubic-bezier(0.32, 0.72, 0, 1);"
-                                src={project.media.src}
+                                src="{base}/{project.media.src}"
                                 autoplay loop muted playsinline preload="auto"
                                 disablepictureinpicture disableremoteplayback
                                 use:playVideo
@@ -126,13 +127,13 @@
                             <div
                                 class="inlined-svg absolute inset-0 transition-transform duration-700 group-hover:scale-105"
                                 style="transition-timing-function: cubic-bezier(0.32, 0.72, 0, 1);"
-                                use:inlineSvg={project.media.src}
+                                use:inlineSvg={`${base}/${project.media.src}`}
                             ></div>
                         {:else if project.media?.type === 'image'}
                             <img
                                 class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                                 style="transition-timing-function: cubic-bezier(0.32, 0.72, 0, 1);"
-                                src={project.media.src}
+                                src="{base}/{project.media.src}"
                                 alt={project.name}
                                 loading="lazy"
                                 decoding="async"
