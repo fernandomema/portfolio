@@ -5,9 +5,25 @@
 	import { base } from '$app/paths';
 
 	let printMode = $state(false);
+	let showModal = $state(false);
+
+	const sections = $state([
+		{ id: 'header', label: 'Cabecera', visible: true },
+		{ id: 'experience', label: 'Experiencia Laboral', visible: true },
+		{ id: 'education', label: 'Educación', visible: true },
+		{ id: 'certifications', label: 'Certificaciones', visible: true },
+		{ id: 'skills', label: 'Habilidades Técnicas', visible: true },
+		{ id: 'projects', label: 'Proyectos Destacados', visible: true },
+		{ id: 'softskills', label: 'Habilidades Personales', visible: true },
+		{ id: 'stack', label: 'Stack Preferido', visible: true },
+		{ id: 'approach', label: 'Enfoque Profesional', visible: true },
+		{ id: 'footer', label: 'Footer', visible: true },
+	]);
+
+	let footerPaddingTop = $state(24);
+	let footerMarginTop = $state(6);
 
 	onMount(() => {
-		// Verificar si estamos en modo impresión
 		const urlParams = new URLSearchParams(window.location.search);
 		printMode = urlParams.get('print') === 'true';
 	});
@@ -36,6 +52,19 @@
 
 	function printDocument() {
 		window.print();
+	}
+
+	function toggleSection(id: string) {
+		const section = sections.find(s => s.id === id);
+		if (section) section.visible = !section.visible;
+	}
+
+	function showAll() {
+		sections.forEach(s => s.visible = true);
+	}
+
+	function hideAll() {
+		sections.forEach(s => s.visible = false);
 	}
 </script>
 
@@ -203,7 +232,18 @@
 
 <div class="min-h-screen bg-gray-50 print:bg-white">
 	<!-- Botón de impresión mejorado (solo visible en pantalla) -->
-	<div class="no-print fixed top-4 right-4 z-50">
+	<div class="no-print fixed top-4 right-4 z-50 flex items-center gap-3">
+		{#if !printMode}
+			<button
+				onclick={() => showModal = true}
+				class="relative overflow-hidden group bg-white text-gray-700 px-4 py-3 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 flex items-center gap-2 transform hover:translate-y-[-2px] border border-gray-200"
+			>
+				<svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+					<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4"/>
+				</svg>
+				<span class="font-medium">Configurar</span>
+			</button>
+		{/if}
 		<button
 			onclick={printDocument}
 			class="relative overflow-hidden group bg-linear-to-r from-blue-700 via-blue-600 to-indigo-700 text-white px-6 py-3 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 flex items-center gap-2 transform hover:translate-y-[-2px]"
@@ -220,11 +260,97 @@
 		</button>
 	</div>
 
+	<!-- Modal de configuración -->
+	{#if showModal}
+		<div class="no-print fixed inset-0 z-[100] flex items-center justify-center p-4">
+			<button
+				class="absolute inset-0 bg-black/50 backdrop-blur-sm"
+				onclick={() => showModal = false}
+				aria-label="Cerrar"
+			></button>
+			<div class="relative bg-white rounded-2xl shadow-2xl w-full max-w-md p-6 z-10">
+				<div class="flex items-center justify-between mb-6">
+					<h2 class="text-xl font-bold text-gray-900">Configurar CV</h2>
+					<button
+						onclick={() => showModal = false}
+						class="text-gray-400 hover:text-gray-600 transition-colors"
+						aria-label="Cerrar"
+					>
+						<svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+							<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+						</svg>
+					</button>
+				</div>
+
+				<p class="text-sm text-gray-500 mb-4">Selecciona las secciones que quieres mostrar en el CV:</p>
+
+				<div class="space-y-2 mb-6">
+					{#each sections as section}
+						<label class="flex items-center gap-3 p-3 rounded-lg hover:bg-gray-50 cursor-pointer transition-colors">
+							<input
+								type="checkbox"
+								checked={section.visible}
+								onchange={() => toggleSection(section.id)}
+								class="w-5 h-5 rounded border-gray-300 text-blue-600 focus:ring-blue-500 cursor-pointer"
+							/>
+							<span class="text-sm font-medium text-gray-700">{section.label}</span>
+						</label>
+					{/each}
+				</div>
+
+				{#if sections.find(s => s.id === 'footer')?.visible}
+					<div class="border-t border-gray-200 pt-4 mb-6">
+						<p class="text-sm font-medium text-gray-700 mb-3">Configuración del Footer:</p>
+						<div class="grid grid-cols-2 gap-4">
+							<div>
+								<label for="footer-pt" class="block text-xs text-gray-500 mb-1">Padding Top (px)</label>
+								<input
+									id="footer-pt"
+									type="number"
+									min="0"
+									max="200"
+									bind:value={footerPaddingTop}
+									class="w-full px-3 py-2 text-sm border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+								/>
+							</div>
+							<div>
+								<label for="footer-mt" class="block text-xs text-gray-500 mb-1">Margin Top (px)</label>
+								<input
+									id="footer-mt"
+									type="number"
+									min="0"
+									max="200"
+									bind:value={footerMarginTop}
+									class="w-full px-3 py-2 text-sm border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+								/>
+							</div>
+						</div>
+					</div>
+				{/if}
+
+				<div class="flex gap-3">
+					<button
+						onclick={showAll}
+						class="flex-1 px-4 py-2 text-sm font-medium text-blue-600 bg-blue-50 rounded-lg hover:bg-blue-100 transition-colors"
+					>
+						Mostrar todo
+					</button>
+					<button
+						onclick={hideAll}
+						class="flex-1 px-4 py-2 text-sm font-medium text-gray-600 bg-gray-100 rounded-lg hover:bg-gray-200 transition-colors"
+					>
+						Ocultar todo
+					</button>
+				</div>
+			</div>
+		</div>
+	{/if}
+
 	<!-- Contenido principal del CV -->
 	<div class="a4-container max-w-4xl mx-auto bg-white print:shadow-none shadow-xl overflow-hidden">
 		
 		<!-- Cabecera con diseño premium y profesional optimizado para impresión -->
-		<header class="relative print-avoid-break bg-linear-to-r from-blue-700 via-blue-600 to-indigo-700 text-white pb-6">
+		<header class="relative print-avoid-break bg-linear-to-r from-blue-700 via-blue-600 to-indigo-700 text-white pb-6 {!sections.find(s => s.id === 'header')?.visible ? 'hidden' : ''}">
 			<!-- Patrón geométrico para dar profundidad -->
 			<div class="absolute inset-0 overflow-hidden opacity-10">
 				<div class="absolute top-0 left-0 w-full h-full">
@@ -382,7 +508,7 @@
 		</header>
 
 		<!-- Experiencia Laboral con diseño mejorado -->
-			<section class="px-8 pb-6 mb-6 print-avoid-break">
+			<section class="px-8 pb-6 mb-6 print-avoid-break {!sections.find(s => s.id === 'experience')?.visible ? 'hidden' : ''}">
 			<h2 class="text-2xl font-bold text-blue-800 mb-6 relative inline-block pt-6">
 				<div class="flex items-center">
 					<svg class="w-6 h-6 mr-2 text-blue-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -438,7 +564,7 @@
 		</section>
 
 		<!-- Educación con diseño mejorado -->
-		<section class="px-8 pb-6 print-avoid-break mt-6">
+		<section class="px-8 pb-6 print-avoid-break mt-6 {!sections.find(s => s.id === 'education')?.visible ? 'hidden' : ''}">
 			<h2 class="text-2xl font-bold text-blue-800 mb-6 relative inline-block pt-6">
 				<div class="flex items-center">
 					<svg class="w-6 h-6 mr-2 text-blue-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -465,7 +591,7 @@
 		</section>
 
 		<!-- Certificaciones con diseño mejorado -->
-		<section class="px-8 pb-6 print-avoid-break mt-6">
+		<section class="px-8 pb-6 print-avoid-break mt-6 {!sections.find(s => s.id === 'certifications')?.visible ? 'hidden' : ''}">
 			<h2 class="text-2xl font-bold text-blue-800 mb-6 relative inline-block pt-6">
 				<div class="flex items-center">
 					<svg class="w-6 h-6 mr-2 text-blue-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -511,7 +637,7 @@
 		</section>
 
 		<!-- Habilidades Técnicas con diseño mejorado -->
-			<section class="px-8 pb-6 mb-6 print-avoid-break">
+			<section class="px-8 pb-6 mb-6 print-avoid-break {!sections.find(s => s.id === 'skills')?.visible ? 'hidden' : ''}">
 				<h2 class="text-2xl font-bold text-blue-800 mb-6 relative inline-block pt-6">
 					<div class="flex items-center">
 						<svg class="w-6 h-6 mr-2 text-blue-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -543,7 +669,7 @@
 			</section>
 
 		<!-- Proyectos Destacados con diseño mejorado -->
-		<section class="px-8 pb-6 mb-6 print-break">
+		<section class="px-8 pb-6 mb-6 print-break {!sections.find(s => s.id === 'projects')?.visible ? 'hidden' : ''}">
 			<h2 class="text-2xl font-bold text-blue-800 mb-6 relative inline-block pt-6">
 				<div class="flex items-center">
 					<svg class="w-6 h-6 mr-2 text-blue-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -605,7 +731,7 @@
 
 		
 		<!-- Soft Skills -->
-		<section class="px-8 pb-6 mb-6 print-avoid-break">
+		<section class="px-8 pb-6 mb-6 print-avoid-break {!sections.find(s => s.id === 'softskills')?.visible ? 'hidden' : ''}">
 			<h2 class="text-2xl font-bold text-blue-800 mb-6 relative inline-block pt-6">
 				<div class="flex items-center">
 					<svg class="w-6 h-6 mr-2 text-blue-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -639,7 +765,7 @@
 
 		<!-- Stack Preferido -->
 		{#if PortfolioData.preferredStack}
-			<section class="px-8 pb-6 mb-6 print-avoid-break">
+			<section class="px-8 pb-6 mb-6 print-avoid-break {!sections.find(s => s.id === 'stack')?.visible ? 'hidden' : ''}">
 <h2 class="text-2xl font-bold text-blue-800 mb-6 relative inline-block pt-6">
   <div class="flex items-center">
 	<svg class="w-6 h-6 mr-2 text-blue-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -731,7 +857,7 @@
 		{/if}
 
 		<!-- Enfoque Profesional -->
-		<section class="px-8 pb-6 mb-6 print-avoid-break">
+		<section class="px-8 pb-6 mb-6 print-avoid-break {!sections.find(s => s.id === 'approach')?.visible ? 'hidden' : ''}">
 			<h2 class="text-2xl font-bold text-blue-800 mb-6 relative inline-block pt-6">
 				<div class="flex items-center">
 					<svg class="w-6 h-6 mr-2 text-blue-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -904,7 +1030,9 @@
 		</section>
 
 		<!-- Footer -->
-		<footer class="text-center text-gray-500 text-sm py-6 border-t border-gray-200 print-avoid-break bg-gray-50 mt-[6px] print:mt-6">
+		<footer class="text-center text-gray-500 text-sm py-6 border-t border-gray-200 print-avoid-break bg-gray-50 print:mt-6 {!sections.find(s => s.id === 'footer')?.visible ? 'hidden' : ''}"
+			style="padding-top: {footerPaddingTop}px; margin-top: {footerMarginTop}px;"
+		>
 			<div class="flex flex-col items-center justify-center">
 				<p class="mb-2">CV actualizado el {new Date().toLocaleDateString('es-ES', { 
 					year: 'numeric', 
