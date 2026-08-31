@@ -10,6 +10,11 @@ export const PortfolioData = {
         github: "https://github.com/fernandomema",
         linkedin: "https://www.linkedin.com/in/fernandomema",
         application: "Fullstack Developer",
+        languages: [
+            { name: "Español", level: "Nativo", icon: "icon-[circle-flags--lang-es]" },
+            { name: "Catalán", level: "Nativo", icon: "icon-[circle-flags--lang-ca]" },
+            { name: "Inglés", level: "Sin certificación", icon: "icon-[circle-flags--lang-en]" },
+        ],
     },
     jobs: [{
         name: "Desarrollador Web",

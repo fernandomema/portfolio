@@ -12,6 +12,7 @@
 		{ id: 'experience', label: 'Experiencia Laboral', visible: true },
 		{ id: 'education', label: 'Educación', visible: true },
 		{ id: 'certifications', label: 'Certificaciones', visible: true },
+		{ id: 'languages', label: 'Idiomas', visible: true },
 		{ id: 'skills', label: 'Habilidades Técnicas', visible: true },
 		{ id: 'projects', label: 'Proyectos Destacados', visible: true },
 		{ id: 'softskills', label: 'Habilidades Personales', visible: true },
@@ -631,6 +632,29 @@
 								</div>
 							{/if}
 						</div>
+					</div>
+				{/each}
+			</div>
+		</section>
+
+		<!-- Idiomas -->
+		<section class="px-8 pb-6 print-avoid-break mt-6 {!sections.find(s => s.id === 'languages')?.visible ? 'hidden' : ''}">
+			<h2 class="text-2xl font-bold text-blue-800 mb-6 relative inline-block pt-6">
+				<div class="flex items-center">
+					<span class="icon-[tabler--language] size-6 mr-2 text-blue-700"></span>
+					<span class="relative z-10">Idiomas</span>
+				</div>
+				<span class="h-1 w-full block bg-linear-to-r from-blue-600 to-blue-400 opacity-80 rounded-full absolute left-0 bottom-0"></span>
+			</h2>
+
+			<div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+				{#each PortfolioData.user.languages as language}
+					<div class="bg-white p-4 rounded-lg shadow-sm border-l-4 border-cyan-500 hover:shadow-md transition-shadow duration-300 flex flex-col justify-between">
+						<div class="flex items-center gap-2">
+							<span class="{language.icon} size-5"></span>
+							<h3 class="text-lg font-semibold text-gray-900">{language.name}</h3>
+						</div>
+						<p class="text-sm text-cyan-700 font-medium mt-1">{language.level}</p>
 					</div>
 				{/each}
 			</div>

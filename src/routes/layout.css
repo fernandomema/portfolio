@@ -1,7 +1,7 @@
 @import "tailwindcss";
 
 @plugin "@iconify/tailwind4" {
-	prefixes: tabler;
+	prefixes: tabler, circle-flags;
 }
 
 @source "../**/*.{svelte,ts,js,html}";
